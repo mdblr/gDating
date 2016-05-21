@@ -1,0 +1,26 @@
+{
+  "name": "g-dating",
+  "version": "0.0.1",
+  "description": "angular crud app with backend api using jwt token auth",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "go4": "superstatic"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "angular",
+    "jwt",
+    "auth",
+    "dating"
+  ],
+  "author": "mdblr",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5"
+  }
+}
