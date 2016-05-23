@@ -6,9 +6,12 @@ div.ng-view * {
   box-sizing: border-box;
 }
 
-/*de-nav > * {
-  padding: 0 1em;
-}*/
+de-profile-results main {
+  display: block;
+  max-height: 7.9em;
+  max-width: 30em;
+  overflow-y: scroll;
+}
 
 .-c {
   display: flex;
@@ -29,7 +32,7 @@ div.ng-view * {
 }
 
 .y-center {
-  align-self: center;
+  align-items: center;
 }
 
 .-center-content {
