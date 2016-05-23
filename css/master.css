@@ -1,0 +1,41 @@
+body {
+  padding: 1em;
+}
+
+div.ng-view * {
+  box-sizing: border-box;
+}
+
+/*de-nav > * {
+  padding: 0 1em;
+}*/
+
+.-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.-r {
+  display: flex;
+  flex-direction: row;
+}
+
+.spread-out {
+  justify-content: space-between;
+}
+
+.x-center {
+  justify-content: center;
+}
+
+.y-center {
+  align-self: center;
+}
+
+.-center-content {
+  align-content: center;
+}
+
+.-right {
+  align-items: flex-end;
+}
