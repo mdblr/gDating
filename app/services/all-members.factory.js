@@ -14,16 +14,15 @@
     members.get = function () {
       return $http.get(members.url)
               .then( function(success) {
-                return success.data;
+                return Object.assign([], success.data.data);
               })
               .catch( function(error) {
                 return error;
               });
     }
 
-    return {
-      members
-    }
+    return members;
+
   }
 
 
