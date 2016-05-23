@@ -1,15 +1,19 @@
 <h2>gDating Members</h2>
-<div ng-repeat='profile in members' class='-r'>
-  <section>
-    <aside>
-      <p>{{user.avatar}}</p>
-    </aside>
-    <main class='-c'>
-      <p><h4>{{user.username}}</h4></p>
-      <p>{{user.description}}</p>
-    </main>
+
+<de-profile-results>
+  <section ng-repeat='obj in user.populate'>
+    <div class='-r y-center'>
+      <aside>
+        <p><img src={{obj.avatar}} /></p>
+      </aside>
+      <main class='-c'>
+        <p>{{obj.username}}</p>
+        <p>{{obj.description}}</p>
+      </main>
+    </div>
   </section>
-  <aside class='x-center y-center'>
-    <img src='http://placekitten.com/g/500/500'
-  </aside>
-</div>
+</de-profile-results>
+
+<aside class='x-center y-center'>
+  <img src='http://placekitten.com/g/500/500'
+</aside>
