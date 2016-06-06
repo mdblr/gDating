@@ -13,6 +13,10 @@ de-profile-results main {
   overflow-y: scroll;
 }
 
+de-profile-results img {
+  max-width: 250px;
+}
+
 .-c {
   display: flex;
   flex-direction: column;
