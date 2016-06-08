@@ -19,11 +19,9 @@
             responseError: function(rejection) {
               if(rejection.data === 'invalid token' || rejection.data === 'invalid signature' || rejection.data === 'jwt malformed') {
                 $location.path('/logout');
-                return $q.reject(err);
               }
               if (rejection.status === 401) {
-                $location.path('/members');
-                return $q.reject(err);
+                $location.path('/');
               }
               return $q.reject(rejection);
             }
