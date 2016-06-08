@@ -14,15 +14,14 @@
       })
       .when('/signup', {
         templateUrl: 'app/partials/signup.html',
-        controllerAs: 'log',
+        controllerAs: 'User',
         controller: 'Register',
-        preventWhenLoggedIn: true,
-        signup: true
+        preventWhenLoggedIn: true
       })
       .when('/login', {
         templateUrl: 'app/partials/login.html',
         controllerAs: 'log',
-        controller: 'Register',
+        controller: 'LogIn',
         preventWhenLoggedIn: true
       })
       .when('/members', {
@@ -32,9 +31,16 @@
         restricted: true
       })
       .when('/logout', {
-        templateUrl: 'app/partials/logout.html',
+        templateUrl: 'app/partials/landing.html',
         controllerAs: 'user',
-        controller: 'User'
+        controller: 'User',
+        preventWhenLoggedOut: true,
+        resolve: {
+          logout: function(Users, $location) {
+            Users.logout();
+            $location.path('/')
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'
@@ -52,29 +58,21 @@
 
   runBlock.$inject = ['$rootScope', '$location', '$window'];
 
-    // function runBlock($rootScope, $location, $window) {
-    //   $rootScope.$on('$routeChangeStart', function (event, next, current) {
-    //     if (next.restricted && !$window.localStorage.getItem('token')) {
-    //       if (current && current.signup) {
-    //         $location.path('/signup');
-    //       }
-    //       else {
-    //         $location.path('/login');
-    //       }
-    //     }
-    //   });
-    // }
     function runBlock($rootScope, $location, $window) {
       $rootScope.$on('$routeChangeStart', function (event, next, current) {
-        // if you try access a restricted page without logging in
         if (next.restricted && !$window.localStorage.getItem("token")) {
             $location.path('/login');
-          }
         }
-        // if you try to log in or sign up once logged in
-        if (next.preventWhenLoggedIn && $window.localStorage.getItem("token")) {
-          $location.path('/users');
+        else if (next.preventWhenLoggedOut && !$window.localStorage.getItem("token")) {
+            $location.path('/login');
         }
+        else if (next.preventWhenLoggedIn && $window.localStorage.getItem("token")) {
+          $location.path('/members');
+        }
+
+      });
+      $rootScope.$on('$routeChangeFailure', function (event, next, current) {
+        $location.path = current;
       });
   }
 })();
