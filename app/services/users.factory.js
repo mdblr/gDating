@@ -24,7 +24,7 @@
     }
 
     var login = function(user) {
-      user.email = user.email.toLowerCase(); 
+      user.email = user.email.toLowerCase();
       return $http.post(`${gDates}/${resource[1]}/${resource[3]}`, user);
     }
 
