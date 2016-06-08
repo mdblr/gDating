@@ -1,25 +1,24 @@
 (function() {
   angular
       .module('gDating')
-      .controller('Register', Register)
+      .controller('LogIn', LogIn)
 
-  Register.$inject = ['$location', 'Users']
+  LogIn.$inject = ['$location', 'Users']
 
 
-  function Register($location, Users) {
+  function LogIn($location, Users) {
 
         var vm = this;
-        vm.reg = {};
+        vm.creds = {};
 
-        vm.signup = function(reg) {
-          reg.address.geo = { lng: 0, lat: 0 }
-          Users.signup(reg)
+        vm.login = function(creds) {
+          Users.login(creds)
           .then(function(data) {
             Users.setCurrentUser(data);
             $location.path('/members');
           })
           .catch(function(data) {
-            vm.error = data.name;
+            vm.errors = data.name;
             throw vm.errors;
           })
       }

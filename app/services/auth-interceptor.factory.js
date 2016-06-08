@@ -12,7 +12,7 @@
               config.headers['X-Requested-With'] = 'XMLHttpRequest';
               var token = window.localStorage.getItem('token')
               if (token) {
-                config.headers.Authorization = `Bearer ${$window.sessionStorage.token}`
+                config.headers.Authorization = `Bearer ${token}`
               }
               return $q.resolve(config);
             },
@@ -22,7 +22,7 @@
                 return $q.reject(err);
               }
               if (rejection.status === 401) {
-                $location.path('/users');
+                $location.path('/members');
                 return $q.reject(err);
               }
               return $q.reject(rejection);

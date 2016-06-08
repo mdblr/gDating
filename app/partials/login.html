@@ -1,4 +1,7 @@
-<label>Email</label>
-<input type='email' />
-<label>Password</label>
-<input type='password' />
+<form ng-submit='log.login(member)'>
+  <label>Email</label>
+  <input type='email' ng-model='member.email' />
+  <label>Password</label>
+  <input type='password' ng-model='member.password'/>
+  <input type='submit' />
+</form>

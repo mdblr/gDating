@@ -3,9 +3,9 @@
     .module('gDating')
     .controller('User', User)
 
-  function User(MembersAll) {
+  function User(Users) {
     var vm = this;
-    var get_member_profiles = MembersAll.get();
+    var get_member_profiles = Users.everyUser();
 
 
     get_member_profiles

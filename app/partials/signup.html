@@ -1,11 +1,30 @@
-<form>
-  <label>First Name</label>
-  <input type='text' />
-  <label>last Name</label>
-  <input type='text' />
-  <label>Email</label>
-  <input type='email' />
-  <label>Password</label>
-  <input type='password' />
+<aside ng-if='User.error'>
+  <p>
+    {{User.error}}
+  </p>
+</aside>
 
+<form class='-c' ng-submit='User.signup(User.reg)'>
+  <label>Username</label>
+  <input type='text' ng-model='User.reg.username' required/>
+
+  <label>Email</label>
+  <input type='email' ng-model='User.reg.email' required/>
+
+  <label>Password</label>
+  <input type='password' ng-model='User.reg.password' required/>
+
+  <label>First Name</label>
+  <input type='text' ng-model='User.reg.names.firstName' required/>
+
+  <label>Birthday</label>
+  <input type='date' ng-model='User.reg.dob' required/>
+
+  <label>Your Url</label>
+  <input type='text' placeholder='PizzaDating.com/[your profile]' ng-model='User.reg.slug' required/>
+
+  <label>Zipcode</label>
+  <input type='number' ng-model='User.reg.address.zipcode' required/>
+
+  <input type='submit' />
 </form>
