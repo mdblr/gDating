@@ -1,0 +1,30 @@
+<header id='heading' class='-r spread-out'>
+  <a data-users='all'>All</a>
+  <a data-users='popular'>Popular</a>
+  <a data-users='matches'>Matches</a>
+  <a data-users='proximal'>Close By</a>
+  <a data-users='chats'> Chats </a>
+
+</header>
+
+<h2>gDating Members</h2>
+
+<section id='all' ng-class=' '>
+  <de-profile-results>
+    <section ng-repeat='obj in user.populate'>
+      <div class='-r y-center'>
+        <aside>
+          <p><img src={{obj.avatar}} /></p>
+        </aside>
+        <main class='-c'>
+          <p>{{obj.username}}</p>
+          <p>{{obj.description}}</p>
+        </main>
+      </div>
+    </section>
+  </de-profile-results>
+</section>
+<section id='popular' class='ng-hide'>Popular</section>
+<section id='matches' class='ng-hide'>Matches</section>
+<section id='proximal' class='ng-hide'>Proximal</section>
+<section id='chats' class='ng-hide'>Chats</section>
