@@ -8,8 +8,8 @@
     var gDates = 'http://galvanize-student-apis.herokuapp.com/gdating';
     var resource = 'matches';
 
-    function Matches($http)
-      {
+    function Matches($http) {
+
       var getMatches = function(user) {
         $http.get(`${gDates}/${user._id}/${resource}`);
       };
@@ -27,7 +27,6 @@
         addMatch,
         deleteMatch
       }
-
     }
 
 })();
