@@ -10,10 +10,10 @@
 
     var gDates = 'http://galvanize-student-apis.herokuapp.com/gdating';
     var resource = ['members', 'auth', 'register', 'login'];
-    var member = {};
+    var current_user = {};
 
     var everyUser = function () {
-      return $http.get(`${gDates}/${resource[0]}`);
+      return $http.get(`${gDates}/${resource[0]}?limit=20&offset=5`);
     }
 
     var signup = function(user) {
@@ -30,18 +30,16 @@
     }
 
     var setCurrentUser = function(user) {
-        // let {token,user} = data.data
-        var token = user.data.data.token;
-        $window.localStorage.setItem("token",token);
-        $window.localStorage.setItem("user",JSON.stringify(user));
-        member = user.data.data.user;
-        //
-        console.log('member', member);
+
+      var token = user.data.data.token;
+      $window.localStorage.setItem("token",token);
+      $window.localStorage.setItem("user",JSON.stringify(user));
+
     }
 
     var getCurrentUser = function() {
-      // console.log(member.data.user)
-      // return Object.assign(user, data.data)
+      current_user = JSON.parse($window.localStorage.getItem("user"));
+      return current_user;
     }
 
     var getProfile = function(user) {
@@ -76,10 +74,8 @@
       searchProfiles,
       searchBySlug,
       getProfile
-
     }
 
   }
-
 
 })();
