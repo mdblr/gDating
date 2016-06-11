@@ -6,20 +6,23 @@
     Matches.$inject = ['$http'];
 
     var gDates = 'http://galvanize-student-apis.herokuapp.com/gdating';
-    var resource = 'matches';
+    var resource = ['members','matches'];
 
     function Matches($http) {
 
+      var my_favs = {};
+
       var getMatches = function(user) {
-        $http.get(`${gDates}/${user._id}/${resource}`);
+        return $http.get(`${gDates}/${resource[0]}/${user._id}/${resource[1]}`);
       };
 
-      var addMatch = function(user) {
-        $http.post(`${gDates}/${user._id}/${resource}`);
+      var addMatch = function(new_interest, the_interested) {
+        $http.post(`${gDates}/${resource[0]}/${new_interest}/${resource[1]}`, {_match: the_interested})
+        .then(function(data) { my_favs = data; console.log(data); });
       };
 
-      var deleteMatch = function(user, match_id) {
-        $http.delete(`${gDates}/${user._id}/${resource}/${match_id}`);
+      var deleteMatch = function(old_interest, the_uninterested) {
+        $http.delete(`${gDates}/${resource[0]}/${old_interest}/${resource[1]}/${the_uninterested}`);
       };
 
       return {
