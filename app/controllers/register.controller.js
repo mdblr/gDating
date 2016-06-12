@@ -5,8 +5,7 @@
 
   Register.$inject = ['$location', 'Users']
 
-
-  function Register($location, Users) {
+  function Register($location, Users, $window) {
 
         var vm = this;
         vm.reg = {};

@@ -1,30 +1,30 @@
-<aside ng-if='User.error'>
+<aside ng-if='user.error'>
   <p>
-    {{User.error}}
+    {{user.error}}
   </p>
 </aside>
 
-<form class='-c' ng-submit='User.signup(User.reg)'>
+<form class='-c' ng-submit='user.signup(user.reg)'>
   <label>Username</label>
-  <input type='text' ng-model='User.reg.username' required/>
+  <input type='text' ng-model='user.reg.username' required/>
 
   <label>Email</label>
-  <input type='email' ng-model='User.reg.email' required/>
+  <input type='email' ng-model='user.reg.email' required/>
 
   <label>Password</label>
-  <input type='password' ng-model='User.reg.password' required/>
+  <input type='password' ng-model='user.reg.password' required/>
 
   <label>First Name</label>
-  <input type='text' ng-model='User.reg.names.firstName' required/>
+  <input type='text' ng-model='user.reg.names.firstName' required/>
 
   <label>Birthday</label>
-  <input type='date' ng-model='User.reg.dob' required/>
+  <input type='date' ng-model='user.reg.dob' required/>
 
   <label>Your Url</label>
-  <input type='text' placeholder='PizzaDating.com/[your profile]' ng-model='User.reg.slug' required/>
+  <input type='text' placeholder='PizzaDating.com/[your profile]' ng-model='user.reg.slug' required/>
 
   <label>Zipcode</label>
-  <input type='number' ng-model='User.reg.address.zipcode' required/>
+  <input type='number' ng-model='user.reg.address.zipcode' required/>
 
   <input type='submit' />
 </form>

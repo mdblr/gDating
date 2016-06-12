@@ -3,10 +3,10 @@
       .module('gDating')
       .controller('LogIn', LogIn)
 
-  LogIn.$inject = ['$location', 'Users']
+  LogIn.$inject = ['$location', 'Users', '$rootScope']
 
 
-  function LogIn($location, Users) {
+  function LogIn($location, Users, $rootScope) {
 
         var vm = this;
         vm.creds = {};
@@ -15,11 +15,15 @@
           Users.login(creds)
           .then(function(data) {
             Users.setCurrentUser(data);
-            $location.path('/members');
+            // $location.path(`/members/${Users.member._id}`);
+            $location.path(`/members`);
           })
-          .catch(function(data) {
-            vm.errors = data.name;
-            throw vm.errors;
+          .catch( function(err) {
+            // var error = err.name;
+            $rootScope.errors = data.name;
+            return error;
+
+            // $location.path('/login')
           })
       }
   }

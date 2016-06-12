@@ -1,20 +1,37 @@
 (function() {
   angular
     .module('gDating')
-    .controller('User', User)
+    .controller('Member', Member);
 
-  function User(Users) {
+  Member.$inject = ['Users', 'Matches', 'member_profiles', 'current_user'];
+
+  function Member(Users, Matches, member_profiles, current_user) {
+
     var vm = this;
-    var get_member_profiles = Users.everyUser();
+    vm.all = member_profiles;
+    vm.current_user = current_user;
+    vm.id = current_user.data.data.user._id;
+    vm.my_matches;
 
+    Matches.getMatches(current_user.data.data.user)
+    .then( function(res) {
+        vm.my_matches = res;
+      }
+    );
 
-    get_member_profiles
-      .then(function(data) {
-        vm.populate = data;
-      })
-      .catch(function(error) {
-        vm.populate = error;
-      });
+    vm.favorite = Matches.addMatch;
+    vm.unfavorite = Matches.deleteMatch;
+
+    function getPopular() {
+      var profiles = vm.all;
+      var pop = [];
+      for (var i = 0; i < vm.all.length; i++) {
+        profiles[i]._matches.length > 4 ? pop.push(profiles[i]) : 0;
+      }
+      return pop;
+    }
+
+    vm.popular = getPopular();
 
   }
 

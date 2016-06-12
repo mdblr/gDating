@@ -33,7 +33,7 @@
               feature = document.getElementById(this.dataset.users.toString());
               angular.element(feature).toggleClass('ng-hide');
 
-              //changes current view from default, etc. - see line 22.
+              //hides current view, sets new 'tab' to current - see line 22.
               angular.element(current).toggleClass('ng-hide')
               current = feature;
 
