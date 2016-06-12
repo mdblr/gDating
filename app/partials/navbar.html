@@ -1,14 +1,14 @@
 <header class='-r spread-out'>
-
   <aside>
     gPizzaDating
   </aside>
-
   <main>
-    <a href='/signup'>Sign Up</a>
-    &nbsp;
-    <a href='/login'>Log In</a>
-    <a href='/logout'>Log Out</a>
+    <section ng-if='ctrl.current_user'>
+      <a href='/logout'>Log Out</a>
+    </section>
+    <section ng-if='!ctrl.current_user'>
+      <a href='/signup'>Sign Up</a>&nbsp;
+      <a href='/login'>Log In</a>
+    </section>
   </main>
-
 </header>

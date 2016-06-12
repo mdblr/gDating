@@ -1,14 +1,19 @@
 (function() {
   angular
     .module('gDating')
-    .directive('deNav', deNav)
+    .directive('dirNav', dirNav)
 
-  function deNav() {
+  function dirNav() {
 
     var directive = {
-      templateUrl: 'app/partials/navbar.html'
+      templateUrl: 'app/partials/navbar.html',
+      scope: {
+        ctrl : '='
+      }
     }
 
     return directive;
+
   }
+
 })();
